@@ -19,9 +19,9 @@
         <select class="select" name="type" onchange="this.form.submit()">
             <option name="cars" value="null">Select your car type</option>
             <?php foreach ($types as $type) { ?>
-                <option name="car" value="<?= $type ?>" <?php if (!empty($_GET['type']) && $type === $_GET['type']) { ?> selected <?php } ?>>
+                <optigit statuson name="car" value="<?= $type ?>" <?php if (!empty($_GET['type']) && $type === $_GET['type']) { ?> selected <?php } ?>>
                     <?= $type ?>
-                </option>
+                </optigit>
             <?php }; ?>
         </select>
     </form>
