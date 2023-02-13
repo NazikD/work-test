@@ -1,34 +1,53 @@
 <?php
-define('SERVER', "localhost");
-define('USER', "root");
-define('PASSWORD', '');
-define('DB', 'test');
+include 'db-conn.php';
 
-// Create connection
-$conn = mysqli_connect(SERVER, USER, PASSWORD, DB);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+// функция подключает к базе данных
+function connect()
+{
+    $conn = mysqli_connect(SERVER, USER, PASSWORD, DB);
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    mysqli_set_charset($conn, 'utf8');
+    return $conn;
 }
-// else {
-//     echo 'подключено';
+
+
+function select($query)
+{
+    global  $conn;
+    $query_ressult = [];
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $query_ressult = $result;
+        }
+    }
+    return $query_ressult;
+};
+
+
+
+// $sql_types = "SELECT * FROM types";
+// $result = mysqli_query($conn, $sql_types);
+
+// if (mysqli_num_rows($result) > 0) {
+//     // output data of each row
+//     $res = [];
+//     while ($row = mysqli_fetch_assoc($result)) {
+//         $res[] = $row;
+//     }
+// } else {
+//     echo "0 results";
 // };
 
-$sql_types = "SELECT * FROM types";
-$result = mysqli_query($conn, $sql_types);
 
-if (mysqli_num_rows($result) > 0) {
-    // output data of each row
-    $res = [];
-    while ($row = mysqli_fetch_assoc($result)) {
-        $res[] = $row;
-    }
-    // echo '<pre>';
-    // print_r($res);
-    // echo '</pre>';
-} else {
-    echo "0 results";
-};
+
+
+
+
 
 $types = $_GET['type'];
 $sql_tipe_id = "SELECT * FROM marks WHERE tipe_id = $types";

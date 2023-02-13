@@ -12,6 +12,15 @@
 <body>
     <?php
     require_once 'function.php';
+
+
+
+    $conn = connect();
+
+    echo 'pre';
+    $testSelect = select('SELECT * FROM types');
+
+
     ?>
 
 
