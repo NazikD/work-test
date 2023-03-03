@@ -17,11 +17,30 @@
 
     $conn = connect();
 
-    echo 'pre';
-    $testSelect = select('SELECT * FROM types');
-
+    echo '<pre>';
+    $testSelect = select('SELECT name FROM types');
+    print_r($testSelect);
+    echo '</pre>';
 
     ?>
+
+
+    <form action="">
+        <select name="type" onchange="this.form.submit()">
+            <option name="numb" value="null" selected disabled>Select your car type</option>
+            <?php
+            foreach ($testSelect as $value) {
+                foreach ($value as $value_type) { ?>
+                    <option value="">
+                        <?php echo $value_type ?>
+                    </option>
+                <?php }; ?>
+            <?php } ?>
+        </select>
+    </form>
+
+
+    <!-- ======================= -->
 
 
 

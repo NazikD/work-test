@@ -21,8 +21,8 @@ function select($query)
     $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $query_ressult = $result;
+        while ($row[] = mysqli_fetch_assoc($result)) {
+            $query_ressult = $row;
         }
     }
     return $query_ressult;
@@ -49,41 +49,41 @@ function select($query)
 
 
 
-$types = $_GET['type'];
-$sql_tipe_id = "SELECT * FROM marks WHERE tipe_id = $types";
-$result_2 = mysqli_query($conn, $sql_tipe_id);
+// $types = $_GET['type'];
+// $sql_tipe_id = "SELECT * FROM marks WHERE tipe_id = $types";
+// $result_2 = mysqli_query($conn, $sql_tipe_id);
 
-if (!empty($_GET['type'])) {
-    if (mysqli_num_rows($result_2) > 0) {
-        // output data of each row
-        $res_2 = [];
-        while ($row = mysqli_fetch_assoc($result_2)) {
-            $res_2[] = $row;
-        }
-    } else {
-        echo "0 results";
-    };
-}
-
-
+// if (!empty($_GET['type'])) {
+//     if (mysqli_num_rows($result_2) > 0) {
+//         // output data of each row
+//         $res_2 = [];
+//         while ($row = mysqli_fetch_assoc($result_2)) {
+//             $res_2[] = $row;
+//         }
+//     } else {
+//         echo "0 results";
+//     };
+// }
 
 
 
-$marks = $_GET['mark'];
-$sql_mark_id = "SELECT * FROM models WHERE mark_id = $marks";
-$result_3 = mysqli_query($conn, $sql_mark_id);
 
-if (!empty($_GET['mark'])) {
-    if (mysqli_num_rows($result_3) > 0) {
-        // output data of each row
-        $res_3 = [];
-        while ($row = mysqli_fetch_assoc($result_3)) {
-            $res_3[] = $row;
-        }
-    } else {
-        echo "0 results";
-    };
-}
+
+// $marks = $_GET['mark'];
+// $sql_mark_id = "SELECT * FROM models WHERE mark_id = $marks";
+// $result_3 = mysqli_query($conn, $sql_mark_id);
+
+// if (!empty($_GET['mark'])) {
+//     if (mysqli_num_rows($result_3) > 0) {
+//         // output data of each row
+//         $res_3 = [];
+//         while ($row = mysqli_fetch_assoc($result_3)) {
+//             $res_3[] = $row;
+//         }
+//     } else {
+//         echo "0 results";
+//     };
+// }
 
 
 
@@ -118,4 +118,4 @@ if (!empty($_GET['mark'])) {
 
 // var_dump($_GET);
 
-mysqli_close($conn);
+// mysqli_close($conn);
